@@ -1,0 +1,128 @@
+<div class="container">
+  <div>
+    <form *ngIf="!isRegistered" (ngSubmit)="onSubmit()" #register="ngForm">
+      <div class="form-group">
+        <label for="firstName">First Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="firstName"
+          required
+          [(ngModel)]="model.firstName"
+          name="firstName"
+          #firstName="ngModel"
+        />
+        <div
+          [hidden]="firstName.valid || firstName.pristine"
+          class="alert alert-danger"
+        >
+          First Name is required
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="lastName">Last Name</label>
+        <input
+          type="test"
+          class="form-control"
+          id="lastName"
+          required
+          [(ngModel)]="model.lastName"
+          name="lastName"
+          #lastName="ngModel"
+        />
+        <div
+          [hidden]="lastName.valid || lastName.pristine"
+          class="alert alert-danger"
+        >
+          Last Name is required
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="phoneNumber">Phone Number</label>
+        <input
+          type="text"
+          class="form-control"
+          id="phoneNumber"
+          required
+          [(ngModel)]="model.phoneNumber"
+          name="phoneNumber"
+          #phoneNumber="ngModel"
+        />
+        <div
+          [hidden]="phoneNumber.valid || phoneNumber.pristine"
+          class="alert alert-danger"
+        >
+          Phone Number is required
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input
+          type="email"
+          class="form-control"
+          id="email"
+          required
+          [(ngModel)]="model.email"
+          name="email"
+          #email="ngModel"
+        />
+        <div
+          [hidden]="email.valid || email.pristine"
+          class="alert alert-danger"
+        >
+          Email is required
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input
+          type="password"
+          class="form-control"
+          id="password"
+          required
+          [(ngModel)]="model.password"
+          name="password"
+          #password="ngModel"
+        />
+        <div
+          [hidden]="password.valid || password.pristine"
+          class="alert alert-danger"
+        >
+          Password is required
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="confirmPassword">Confirm Password</label>
+        <input
+          type="password"
+          class="form-control"
+          id="confirmPassword"
+          required
+          [(ngModel)]="model.confirmPassword"
+          name="confirmPassword"
+          #confirmPassword="ngModel"
+        />
+        <div
+          [hidden]="confirmPassword.valid || confirmPassword.pristine"
+          class="alert alert-danger"
+        >
+          Confirm Password is required
+        </div>
+      </div>
+      <button
+        type="submit"
+        class="btn btn-success"
+        [disabled]="!register.form.valid"
+      >
+        Register
+      </button>
+      <button type="button" class="btn btn-default" (click)="register.reset()">
+        Reset
+      </button>
+    </form>
+
+    <div class="alert alert-success" *ngIf="isRegistered">
+      (display user here) has been registered
+    </div>
+  </div>
+</div>
