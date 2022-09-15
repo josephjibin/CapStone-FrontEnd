@@ -4,15 +4,19 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
-import { LoginComponent } from './features/users/login/login.component';
+import { LoginComponent } from './features/login/login.component';
 import { authInterceptorProviders } from './core/interceptors/auth.interceptor';
-import { RegisterComponent } from './features/users/register/register.component';
 import { HomeComponent } from './features/home/home.component';
 import { NavBarComponent } from './ui/nav-bar/nav-bar.component';
 import { FooterComponent } from './ui/footer/footer.component';
+import { ListUsersComponent } from './features/maintenance/users/list-users/list-users.component';
+import { AddEditUsersComponent } from './features/maintenance/users/add-edit-users/add-edit-users.component';
 import { PageNotFoundComponent } from './ui/page-not-found/page-not-found.component';
 import { AlertComponent } from './ui/alert/alert.component';
+import { AddEditRolesComponent } from './features/maintenance/roles/add-edit-roles/add-edit-roles.component';
+import { ListRolesComponent } from './features/maintenance/roles/list-roles/list-roles.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { RegisterComponent } from './features/register/register.component';
 
 @NgModule({
   declarations: [
@@ -22,8 +26,12 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     RegisterComponent,
     HomeComponent,
     NavBarComponent,
+    ListUsersComponent,
+    AddEditUsersComponent,
     PageNotFoundComponent,
     AlertComponent,
+    AddEditRolesComponent,
+    ListRolesComponent
   ],
   imports: [
     BrowserModule,
