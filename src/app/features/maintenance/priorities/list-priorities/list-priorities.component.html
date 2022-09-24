@@ -1,0 +1,31 @@
+<h1>Priorities</h1>
+<!--<a routerLink="add" class="btn btn-sm btn-success mb-2">Add Priorities</a>-->
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th style="width: 30%">Priorities Id</th>
+            <th style="width: 30%">Name</th>
+            <th style="width: 30%">Description</th>
+            <th style="width: 10%"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let priorities of priorities">
+            <td>{{priorities.id}}</td>
+            <td>{{priorities.name}}</td>
+            <td>{{priorities.description}}</td>
+             <!--<td style="white-space: nowrap">
+               <a routerLink="edit/{{priorities.id}}" class="btn btn-sm btn-primary mr-1">Edit</a>
+                <button (click)="deletepriorities(priorities.id ?? '')" class="btn btn-sm btn-danger btn-delete-priorities" [disabled]="this.isDeleting">
+                    <span *ngIf="this.isDeleting" class="spinner-border spinner-border-sm"></span>
+                    <span *ngIf="!this.isDeleting">Delete</span>
+                </button>
+            </td>-->
+        </tr>
+        <tr *ngIf="!priorities">
+            <td colspan="4" class="text-center">
+                <span class="spinner-border spinner-border-lg align-center"></span>
+            </td>
+        </tr>
+    </tbody>
+</table>

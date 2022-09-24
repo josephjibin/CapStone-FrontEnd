@@ -19,6 +19,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RegisterComponent } from './features/register/register.component';
 import { AddEditCategoriesComponent } from './features/maintenance/categories/add-edit-categories/add-edit-categories.component';
 import { ListCategoriesComponent } from './features/maintenance/categories/list-categories/list-categories.component';
+import { ListPrioritiesComponent } from './features/maintenance/priorities/list-priorities/list-priorities.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { ListCategoriesComponent } from './features/maintenance/categories/list-
     AddEditRolesComponent,
     ListRolesComponent,
     AddEditCategoriesComponent,
-    ListCategoriesComponent
+    ListCategoriesComponent,
+    ListPrioritiesComponent
   ],
   imports: [
     BrowserModule,
