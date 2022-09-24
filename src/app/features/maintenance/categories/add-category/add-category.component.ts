@@ -21,16 +21,22 @@ export class AddCategoryComponent implements OnInit {
   id!: string;
   loading = false;
   submitted = false;
+  categories : Category[] = [];
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private categoryService: CategoryService,
-    private alertService: AlertService
+    private alertService: AlertService,
   ) {}
 
   ngOnInit() {
-    console.log('add category');
+    this.categoryService.getCategoryList().subscribe(data => {
+      this.categories=data;
+      console.log(this.categories);
+     }
+     );
+    console.log('Add category begin');
   }
 
   onSubmit() {
@@ -40,7 +46,7 @@ export class AddCategoryComponent implements OnInit {
     this.alertService.clear();
     // stop here if form is invalid
     if (this.addCategoryView.invalid) {
-      console.log('Enter correct name and description');
+      alert('Name and description are required to proceed.');
       return;
     }
     this.loading = true;
@@ -49,7 +55,6 @@ export class AddCategoryComponent implements OnInit {
   }
 
   private createCategory() {
-    console.log('inside createCategory method');
     this.categoryService
       .create(this.addCategoryView.value)
       .pipe(first())
@@ -58,7 +63,19 @@ export class AddCategoryComponent implements OnInit {
           this.alertService.success('A new category has been  added ', {
             keepAfterRouteChange: true,
           });
-          this.router.navigate(['../'], { relativeTo: this.route });
+
+          //uncomment following to return the categories link
+          //this.router.navigate(['../'], { relativeTo: this.route });
+
+          this.loading=false;
+          this.addCategoryView.reset();
+
+          //print the list of categories on console
+          this.categoryService.getCategoryList().subscribe(data => {
+            this.categories=data;
+            console.log(this.categories);
+           }
+           );
         },
         error: (error) => {
           this.alertService.error(error.error);

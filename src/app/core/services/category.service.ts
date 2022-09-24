@@ -10,13 +10,16 @@ import { Category } from '../models/category';
 export class CategoryService {
   private baseUrl;
   constructor(private httpClient: HttpClient) {
-    this.baseUrl = `${environment.baseUrl}/role`;
+    this.baseUrl = `http://localhost:3000/categories`;
   }
 
   create(category: Category) {
     console.log("category has been created");
     console.log(category);
-    return this.httpClient.get(this.baseUrl);
+    return this.httpClient.post(this.baseUrl,category);
   }
 
+  getCategoryList() {
+    return this.httpClient.get<Category[]>(this.baseUrl);
+  }
 }
