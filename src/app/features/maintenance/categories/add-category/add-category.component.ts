@@ -30,27 +30,26 @@ export class AddCategoryComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    
-    console.log('add');
-    
+    console.log('add category');
   }
 
   onSubmit() {
     this.submitted = true;
-    console.log('inside submit');
+    console.log('inside submit method');
     // reset alerts on submit
     this.alertService.clear();
     // stop here if form is invalid
     if (this.addCategoryView.invalid) {
+      console.log('Enter correct name and description');
       return;
     }
     this.loading = true;
-    console.log('call createCategory');
+    console.log('call createCategory method');
     this.createCategory();
   }
 
   private createCategory() {
-    console.log('inside createCategory');
+    console.log('inside createCategory method');
     this.categoryService
       .create(this.addCategoryView.value)
       .pipe(first())
