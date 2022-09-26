@@ -16,6 +16,9 @@ export class PrioritiesService {
     return this.httpClient.get<Priorities[]>(this.baseUrlDemoPriorities);
   }
   
+  delete(prioritiesId: string) {
+    return this.httpClient.delete(`${this.baseUrlDemoPriorities}/${prioritiesId}`);
+  }
 
   
 }

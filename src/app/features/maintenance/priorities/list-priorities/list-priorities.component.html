@@ -14,13 +14,17 @@
             <td>{{priorities.id}}</td>
             <td>{{priorities.name}}</td>
             <td>{{priorities.description}}</td>
-             <!--<td style="white-space: nowrap">
+             <td style="white-space: nowrap">
                <a routerLink="edit/{{priorities.id}}" class="btn btn-sm btn-primary mr-1">Edit</a>
-                <button (click)="deletepriorities(priorities.id ?? '')" class="btn btn-sm btn-danger btn-delete-priorities" [disabled]="this.isDeleting">
+                <button 
+                    (click)="deletePriorities(priorities.id ?? '')" 
+                    class="btn btn-sm btn-danger btn-delete-priorities" 
+                    [disabled]="this.isDeleting">
+                    
                     <span *ngIf="this.isDeleting" class="spinner-border spinner-border-sm"></span>
                     <span *ngIf="!this.isDeleting">Delete</span>
                 </button>
-            </td>-->
+            </td>
         </tr>
         <tr *ngIf="!priorities">
             <td colspan="4" class="text-center">
