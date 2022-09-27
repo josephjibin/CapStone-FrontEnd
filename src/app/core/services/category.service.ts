@@ -14,12 +14,6 @@ export class CategoryService {
   }
 
   create(category: Category) {
-    console.log("category has been created");
-    console.log(category);
     return this.httpClient.post(this.baseUrl,category);
-  }
-
-  getCategoryList() {
-    return this.httpClient.get<Category[]>(this.baseUrl);
   }
 }
