@@ -7,21 +7,19 @@ import { CategoryService } from 'src/app/core/services/category.service';
 import { Category } from 'src/app/core/models/category';
 
 @Component({
-  selector: 'app-add-category',
-  templateUrl: './add-category.component.html',
-  styleUrls: ['./add-category.component.css']
+  selector: 'app-add-edit-categories',
+  templateUrl: './add-edit-categories.component.html',
+  styleUrls: ['./add-edit-categories.component.css']
 })
-
-export class AddCategoryComponent implements OnInit {
-
-  @ViewChild('addCategoryView')
-  public addCategoryView!: NgForm;
+export class AddEditCategoriesComponent implements OnInit {
+  @ViewChild('addEdit')
+  public addEdit!: NgForm;
   model = new Category();
 
   id!: string;
+  isAddMode!: boolean;
   loading = false;
   submitted = false;
-  categories : Category[] = [];
 
   constructor(
     private route: ActivatedRoute,
@@ -31,51 +29,34 @@ export class AddCategoryComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.categoryService.getCategoryList().subscribe(data => {
-      this.categories=data;
-      console.log(this.categories);
-     }
-     );
-    console.log('Add category begin');
+    this.id = this.route.snapshot.params['id'];
+    this.isAddMode = !this.id;    
   }
 
   onSubmit() {
     this.submitted = true;
-    console.log('inside submit method');
     // reset alerts on submit
     this.alertService.clear();
     // stop here if form is invalid
-    if (this.addCategoryView.invalid) {
-      alert('Name and description are required to proceed.');
+    if (this.addEdit.invalid) {
       return;
     }
     this.loading = true;
-    console.log('call createCategory method');
-    this.createCategory();
+    if (this.isAddMode) {
+      this.createCategory();
+    }
   }
 
   private createCategory() {
     this.categoryService
-      .create(this.addCategoryView.value)
+      .create(this.addEdit.value)
       .pipe(first())
       .subscribe({
         next: () => {
           this.alertService.success('A new category has been  added ', {
             keepAfterRouteChange: true,
           });
-
-          //uncomment following to return the categories link
-          //this.router.navigate(['../'], { relativeTo: this.route });
-
-          this.loading=false;
-          this.addCategoryView.reset();
-
-          //print the list of categories on console
-          this.categoryService.getCategoryList().subscribe(data => {
-            this.categories=data;
-            console.log(this.categories);
-           }
-           );
+          this.router.navigate(['../'], { relativeTo: this.route });
         },
         error: (error) => {
           this.alertService.error(error.error);

@@ -9,7 +9,8 @@ import { ListUsersComponent } from './features/maintenance/users/list-users/list
 import { LoginComponent } from './features/login/login.component';
 import { PageNotFoundComponent } from './ui/page-not-found/page-not-found.component';
 import { RegisterComponent } from './features/register/register.component';
-import { AddCategoryComponent } from './features/maintenance/categories/add-category/add-category.component';
+import { AddEditCategoriesComponent } from './features/maintenance/categories/add-edit-categories/add-edit-categories.component';
+import { ListCategoriesComponent } from './features/maintenance/categories/list-categories/list-categories.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'site/home', pathMatch: 'full' },
@@ -26,7 +27,8 @@ const routes: Routes = [
           {
             path: 'categories',
             children: [
-              { path: 'add', component: AddCategoryComponent },
+              { path: '', component: ListCategoriesComponent },
+              { path: 'add', component: AddEditCategoriesComponent },
             ],
           },
           {
