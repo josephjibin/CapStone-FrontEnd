@@ -9,29 +9,14 @@ import { Category } from '../models/category';
 })
 export class CategoryService {
   private baseUrl;
-  private url;
   constructor(private httpClient: HttpClient) {
     this.baseUrl = `http://localhost:3000/categories`;
-    this.url = 'https://api.npoint.io/27d50df5539c713fd486';
   }
 
   create(category: Category) {
     return this.httpClient.post(this.baseUrl,category);
   }
   getAll() {
-    return this.httpClient.get<Category[]>(this.url);
+    return this.httpClient.get<Category[]>(this.baseUrl);
   }
 }
-/*
-export class CategoryService {
- // private baseUrl;
-  private url;
-  constructor(private httpClient: HttpClient) {
-    //this.baseUrl = `${environment.baseUrl}/user`;
-    this.url = 'https://api.npoint.io/27d50df5539c713fd486';
-  }
-  getAll() {
-    return this.httpClient.get<Category[]>(this.url);
-  }
-}
-*/
