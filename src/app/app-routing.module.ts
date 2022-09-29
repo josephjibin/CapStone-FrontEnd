@@ -12,6 +12,7 @@ import { RegisterComponent } from './features/register/register.component';
 import { AddEditCategoriesComponent } from './features/maintenance/categories/add-edit-categories/add-edit-categories.component';
 import { ListCategoriesComponent } from './features/maintenance/categories/list-categories/list-categories.component';
 import { ListPrioritiesComponent } from './features/maintenance/priorities/list-priorities/list-priorities.component';
+import { AddEditPrioritiesComponent } from './features/maintenance/priorities/add-edit-priorities/add-edit-priorities.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'site/home', pathMatch: 'full' },
@@ -53,8 +54,8 @@ const routes: Routes = [
             path: 'priorities',
             children: [
               { path: '', component: ListPrioritiesComponent },
-              { path: 'add', component: AddEditUsersComponent },
-              { path: 'edit/:id', component: ListPrioritiesComponent },
+              { path: 'add', component: AddEditPrioritiesComponent },
+              { path: 'edit/:id', component: AddEditPrioritiesComponent },
             ],
           },
         ],

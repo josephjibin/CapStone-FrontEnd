@@ -27,11 +27,12 @@ export class ListPrioritiesComponent implements OnInit {
     this.isDeleting = true;
     this.prioritiesService
       .delete(id)
-      .pipe(first())
-      .subscribe(() => {
-        this.priorities = this.priorities.filter((x) => x.id !== id);
-        this.isDeleting = false;
-      });
+      this.isDeleting = false;
+      
+      //.subscribe(() => {
+       // this.priorities = this.priorities.filter((x) => x.id !== id);
+       // this.isDeleting = false;
+      //});
 }
 
 }

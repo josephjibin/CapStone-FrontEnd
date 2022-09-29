@@ -15,10 +15,25 @@ export class PrioritiesService {
   getAll() {
     return this.httpClient.get<Priorities[]>(this.baseUrlDemoPriorities);
   }
+  getById(roleId: string) {
+    return roleId;
+    //return this.httpClient.get<Role>(`${this.baseUrl}/${roleId}`);
+  }
   
   delete(prioritiesId: string) {
-    return this.httpClient.delete(`${this.baseUrlDemoPriorities}/${prioritiesId}`);
+    console.log(prioritiesId);
+    //return this.httpClient.delete(`${this.baseUrlDemoPriorities}/${prioritiesId}`);
   }
-
-  
+  create(priority: Priorities) {
+    console.log(priority.description);
+    console.log(priority.name);
+    //console.log(priority.id);
+    //return this.httpClient.post(this.baseUrl, role);
+  }
+  update(prioritiesId: string, priority: Priorities) {
+    console.log(prioritiesId);
+    console.log(priority.description);
+    console.log(priority.name);
+    //return this.httpClient.put(`${this.baseUrl}/${roleId}`, role);
+  }
 }
