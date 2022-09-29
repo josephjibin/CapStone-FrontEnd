@@ -29,6 +29,7 @@ const routes: Routes = [
             children: [
               { path: '', component: ListCategoriesComponent },
               { path: 'add', component: AddEditCategoriesComponent },
+              { path: 'edit/:id', component: AddEditCategoriesComponent },
             ],
           },
           {
