@@ -16,7 +16,16 @@ export class CategoryService {
   create(category: Category) {
     return this.httpClient.post(this.baseUrl,category);
   }
+  
   getAll() {
     return this.httpClient.get<Category[]>(this.baseUrl);
+  }
+
+  getById(categoryId: string) {
+    return this.httpClient.get<Category>(`${this.baseUrl}/${categoryId}`);
+  }
+
+  update(categoryId: string, category: Category) {
+    return this.httpClient.put(`${this.baseUrl}/${categoryId}`, category);
   }
 }
