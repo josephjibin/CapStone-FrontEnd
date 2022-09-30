@@ -16,4 +16,7 @@ export class CategoryService {
   create(category: Category) {
     return this.httpClient.post(this.baseUrl,category);
   }
+  getAll() {
+    return this.httpClient.get<Category[]>(this.baseUrl);
+  }
 }

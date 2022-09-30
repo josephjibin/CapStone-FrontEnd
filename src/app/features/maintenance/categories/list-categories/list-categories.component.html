@@ -1,1 +1,27 @@
-<p>list-categories works!</p>
+<h1>Categories List</h1>
+<a routerLink="add" class="btn btn-sm btn-success mb-2">Add New Category</a>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th style="width: 30%">Category Id</th>
+      <th style="width: 30%">Name</th>
+      <th style="width: 40%">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let category of categories">
+        <td>{{category.id}}</td>
+        <td>{{category.name}}</td>
+        <td>{{category.description}}</td>   
+        <td style="white-space: nowrap">
+            <a routerLink="edit/{{ category.id }}" class="btn btn-sm btn-primary mr-1">Edit</a>
+            <button class="btn btn-sm btn-danger btn-delete-user">
+              <span class=""></span>
+              <span>Delete</span>
+            </button>
+          </td>   
+    </tr>    
+  </tbody>
+</table>
+
