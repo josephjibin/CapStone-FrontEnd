@@ -6,6 +6,7 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
+    "watchjson": "json-server --watch ./src/app/categories.json",
     "test": "ng test"
   },
   "private": true,
@@ -22,6 +23,7 @@
     "@popperjs/core": "^2.11.6",
     "bootstrap": "^5.2.0",
     "bootstrap-icons": "^1.9.1",
+    "json-server": "^0.17.0",
     "jwt-decode": "^3.1.2",
     "rxjs": "~7.4.0",
     "tslib": "^2.3.0",

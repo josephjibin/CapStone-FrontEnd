@@ -1,0 +1,49 @@
+{
+  "categories": [
+    {
+      "id": 2,
+      "name": "Do Sprint1",
+      "description": " Add new category in the category list"
+    },
+    {
+      "id": 3,
+      "name": "ggg",
+      "description": "gvjk"
+    },
+    {
+      "id": 4,
+      "name": "hbk",
+      "description": "bfjkengkj"
+    },
+    {
+      "id": 5,
+      "name": "gr",
+      "description": "geg"
+    },
+    {
+      "id": 6,
+      "name": "dw",
+      "description": "wef"
+    },
+    {
+      "id": 7,
+      "name": "bnvnb",
+      "description": "hvjh"
+    },
+    {
+      "id": 8,
+      "name": "Validating form",
+      "description": "check empty values and display warning"
+    },
+    {
+      "id": 9,
+      "name": "test the file",
+      "description": "Chect the functionality, console print statements "
+    },
+    {
+      "id": 10,
+      "name": "commit changes",
+      "description": "git commit "
+    }
+  ]
+}

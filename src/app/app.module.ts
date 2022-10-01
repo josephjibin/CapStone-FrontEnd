@@ -17,6 +17,8 @@ import { AddEditRolesComponent } from './features/maintenance/roles/add-edit-rol
 import { ListRolesComponent } from './features/maintenance/roles/list-roles/list-roles.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RegisterComponent } from './features/register/register.component';
+import { AddEditCategoriesComponent } from './features/maintenance/categories/add-edit-categories/add-edit-categories.component';
+import { ListCategoriesComponent } from './features/maintenance/categories/list-categories/list-categories.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,9 @@ import { RegisterComponent } from './features/register/register.component';
     PageNotFoundComponent,
     AlertComponent,
     AddEditRolesComponent,
-    ListRolesComponent
+    ListRolesComponent,
+    AddEditCategoriesComponent,
+    ListCategoriesComponent
   ],
   imports: [
     BrowserModule,
