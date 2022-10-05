@@ -29,12 +29,7 @@
           name="description"
           #description="ngModel"
         />
-        <div
-          [hidden]="description.valid"
-          class="alert alert-danger"
-        >
-          Description is required
-      </div>
+        <div class="alert alert-danger" name="description" id="description" *ngIf="description.touched && !description.valid"> description is required</div>
       </div>
       <div class="form-group">
         <button [disabled]="!addEdit.valid" class="btn btn-primary">
@@ -44,7 +39,7 @@
           ></span>
           Save
         </button>
-        <button type="button" class="btn btn-default" (click)="addEdit.reset()">
+        <button type="button" class="btn btn-default" (click)="addEdit.reset()" >
           Reset
         </button>
         <a routerLink="/site/maintenance/priorities" class="btn btn-link">Cancel</a>
