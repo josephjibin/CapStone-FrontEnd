@@ -29,7 +29,7 @@ export class CategoryService {
     return this.httpClient.put(`${this.baseUrl}/${categoryId}`, category);
   }
 
-  delete(categoryId: any) {
+  delete(categoryId: string) {
     return this.httpClient.delete(`${this.baseUrl}/${categoryId}`);
   }
 }

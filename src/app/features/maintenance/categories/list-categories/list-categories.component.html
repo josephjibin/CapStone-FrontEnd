@@ -16,10 +16,10 @@
         <td>{{category.description}}</td>   
         <td style="white-space: nowrap">
             <a routerLink="edit/{{ category.id }}" class="btn btn-sm btn-primary mr-1">Edit</a>
-            <button class="btn btn-sm btn-danger btn-delete-user">
-              <span class=""></span>
-              <span>Delete</span>
-            </button>
+            <button (click)="deleteCategory(category.id ?? '')" class="btn btn-sm btn-danger btn-delete-category" [disabled]="this.isDeleting">
+              <span *ngIf="this.isDeleting" class="spinner-border spinner-border-sm"></span>
+              <span *ngIf="!this.isDeleting">Delete</span>
+          </button>
           </td>   
     </tr>    
   </tbody>

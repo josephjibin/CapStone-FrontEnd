@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Category } from 'src/app/core/models/category';
 import { CategoryService } from 'src/app/core/services/category.service';
- import { AlertService } from 'src/app/core/services/alert.service';
 
 @Component({
   selector: 'app-list-categories',
@@ -9,32 +8,28 @@ import { CategoryService } from 'src/app/core/services/category.service';
   styleUrls: ['./list-categories.component.css']
 })
 export class ListCategoriesComponent implements OnInit {
+  categories!: Category[];
+  isDeleting!: boolean;
 
-  categories !: Category[];
+  constructor(private categoryService: CategoryService) {}
 
-  constructor(private categoryService: CategoryService, private alertService: AlertService) {
-
-  }
-  ngOnInit(): void {
-    this.getCategories();// extrct method to apply DRY
-  }
-  private getCategories() {
+  ngOnInit() {
+    this.isDeleting = false;
     this.categoryService
       .getAll()
       .subscribe((categories) => (this.categories = categories));
   }
-  public deleteCategory(category: Category) {
+
+  deleteCategory(categoryId: string) {
+    const category = this.categories.find((x) => x.id === categoryId);
+    this.isDeleting = true;
     this.categoryService
-      .delete(category.id)
-      .subscribe({
-        next: () => {
-          this.alertService.success(`A category ${category.name} has been deleted`);
-          this.getCategories()
-        },
-        error: (error) => {
-          this.alertService.error(error.error);
-        },
+      .delete(categoryId)
+      .subscribe(() => {
+        this.categories = this.categories.filter(
+          (x) => x.id !== categoryId
+        );
+        this.isDeleting = false;
       });
   }
-
 }

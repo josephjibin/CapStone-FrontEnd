@@ -1,29 +1,9 @@
 {
   "categories": [
     {
-      "id": 2,
-      "name": "Do Sprint1",
-      "description": " Add new category in the category list"
-    },
-    {
-      "id": 3,
-      "name": "ggg",
-      "description": "gvjk"
-    },
-    {
-      "id": 4,
-      "name": "hbk",
-      "description": "bfjkengkj"
-    },
-    {
-      "id": 5,
-      "name": "gr",
-      "description": "geg"
-    },
-    {
       "id": 6,
-      "name": "dw",
-      "description": "wef"
+      "name": "dw_____",
+      "description": "wef_____"
     },
     {
       "id": 7,
@@ -42,8 +22,13 @@
     },
     {
       "id": 10,
-      "name": "commit changes",
+      "name": "commit changes new",
       "description": "git commit "
+    },
+    {
+      "id": 11,
+      "name": "Hell1",
+      "description": "Hellllo2"
     }
   ]
 }
