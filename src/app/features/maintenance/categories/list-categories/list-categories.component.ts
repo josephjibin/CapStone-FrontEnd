@@ -8,17 +8,28 @@ import { CategoryService } from 'src/app/core/services/category.service';
   styleUrls: ['./list-categories.component.css']
 })
 export class ListCategoriesComponent implements OnInit {
+  categories!: Category[];
+  isDeleting!: boolean;
 
-  categories !: Category[];
-  
-  constructor(private categoryService: CategoryService) {
-    
-  }
+  constructor(private categoryService: CategoryService) {}
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.isDeleting = false;
     this.categoryService
       .getAll()
       .subscribe((categories) => (this.categories = categories));
   }
 
+  deleteCategory(categoryId: string) {
+    const category = this.categories.find((x) => x.id === categoryId);
+    this.isDeleting = true;
+    this.categoryService
+      .delete(categoryId)
+      .subscribe(() => {
+        this.categories = this.categories.filter(
+          (x) => x.id !== categoryId
+        );
+        this.isDeleting = false;
+      });
+  }
 }
