@@ -30,13 +30,13 @@ export class AddEditCategoriesComponent implements OnInit {
 
   ngOnInit() {
     this.id = this.route.snapshot.params['id'];
-    this.isAddMode = !this.id;  
+    this.isAddMode = !this.id;
     if (!this.isAddMode) {
       this.categoryService
         .getById(this.id)
         .pipe(first())
         .subscribe((x: Category) => (this.model = x));
-    }  
+    }
   }
 
   onSubmit() {
@@ -51,7 +51,7 @@ export class AddEditCategoriesComponent implements OnInit {
     if (this.isAddMode) {
       this.createCategory();
     }
-    else {
+    else {//if is not added mode then update exist entity
     this.updateCategory();
     }
   }
@@ -83,6 +83,23 @@ export class AddEditCategoriesComponent implements OnInit {
             keepAfterRouteChange: true,
           });
           this.router.navigate(['../../'], { relativeTo: this.route });
+        },
+        error: (error) => {
+          this.alertService.error(error.error);
+          this.loading = false;
+        },
+      });
+  }
+  public deleteCategory() {
+    this.categoryService
+      .delete(this.addEdit.value)
+      .pipe(first())
+      .subscribe({
+        next: () => {
+          this.alertService.success('A category has been deleted', {
+            keepAfterRouteChange: true,
+          });
+          this.router.navigate(['../'], { relativeTo: this.route });
         },
         error: (error) => {
           this.alertService.error(error.error);

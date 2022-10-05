@@ -16,7 +16,7 @@ export class CategoryService {
   create(category: Category) {
     return this.httpClient.post(this.baseUrl,category);
   }
-  
+
   getAll() {
     return this.httpClient.get<Category[]>(this.baseUrl);
   }
@@ -25,7 +25,11 @@ export class CategoryService {
     return this.httpClient.get<Category>(`${this.baseUrl}/${categoryId}`);
   }
 
-  update(categoryId: string, category: Category) {
+  update(categoryId: string, category: Category) {//update category
     return this.httpClient.put(`${this.baseUrl}/${categoryId}`, category);
+  }
+
+  delete(categoryId: any) {
+    return this.httpClient.delete(`${this.baseUrl}/${categoryId}`);
   }
 }

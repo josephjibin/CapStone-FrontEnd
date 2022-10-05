@@ -2,7 +2,7 @@
     <div>
       <h1 *ngIf="isAddMode">Add New Category</h1>
       <h1 *ngIf="!isAddMode">Edit Category</h1>
-    
+
       <form (ngSubmit)="onSubmit()" #addEdit="ngForm" class="needs-validation" novalidate>
         <div class="form-group">
           <input
@@ -30,7 +30,7 @@
             <div *ngIf="name.errors?.['required']" class="text-danger">
               Name is required *.
             </div>
-          </div> 
+          </div>
         </div>
         <div class="form-group">
           <label for="description">Description</label>
@@ -63,8 +63,9 @@
           <button type="button" class="btn btn-primary">
             <a routerLink="/site/maintenance/categories" class="text-white text-decoration-none">Cancel</a>
           </button>
+          <button *ngIf="!isAddMode" type="submit" class="btn btn-danger"><i class="fa fa-trash"
+            (click)="deleteCategory()"></i>Delete</button>
         </div>
       </form>
     </div>
   </div>
-    
