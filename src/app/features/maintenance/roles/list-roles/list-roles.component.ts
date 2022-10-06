@@ -21,6 +21,7 @@ export class ListRolesComponent implements OnInit {
       .pipe(first())
       .subscribe((roles) => (this.roles = roles));
   }
+  
 
   deleteRole(roleId: string) {
     const role = this.roles.find((x) => x.id === roleId);
@@ -36,3 +37,4 @@ export class ListRolesComponent implements OnInit {
       });
   }
 }
+/* comment */
