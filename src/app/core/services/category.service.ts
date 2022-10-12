@@ -10,7 +10,9 @@ import { Category } from '../models/category';
 export class CategoryService {
   private baseUrl;
   constructor(private httpClient: HttpClient) {
-    this.baseUrl = `http://localhost:3000/categories`;
+    this.baseUrl = `${environment.baseUrl}/category`;
+
+    //this.baseUrlJson = `http://localhost:3000/categories`;
   }
 
   create(category: Category) {
@@ -25,7 +27,7 @@ export class CategoryService {
     return this.httpClient.get<Category>(`${this.baseUrl}/${categoryId}`);
   }
 
-  update(categoryId: string, category: Category) {//update category
+  update(categoryId: string, category: Category) {
     return this.httpClient.put(`${this.baseUrl}/${categoryId}`, category);
   }
 
