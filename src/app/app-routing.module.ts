@@ -13,6 +13,7 @@ import { AddEditCategoriesComponent } from './features/maintenance/categories/ad
 import { ListCategoriesComponent } from './features/maintenance/categories/list-categories/list-categories.component';
 import { ListPrioritiesComponent } from './features/maintenance/priorities/list-priorities/list-priorities.component';
 import { AddEditPrioritiesComponent } from './features/maintenance/priorities/add-edit-priorities/add-edit-priorities.component';
+import { ToDoComponent } from './features/to-do/to-do.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'site/home', pathMatch: 'full' },
@@ -20,9 +21,10 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   {
     path: 'site',
-    canActivate: [AuthGuard],
+    //canActivate: [AuthGuard],
     children: [
       { path: 'home', component: HomeComponent },
+      { path: 'todos', component: ToDoComponent },
       {
         path: 'maintenance',
         children: [
@@ -60,8 +62,16 @@ const routes: Routes = [
           },
         ],
       },
+
+      
+
+
+
+
     ],
   },
+
+
   //Wild Card Route for 404 request
   { path: '**', pathMatch: 'full', component: PageNotFoundComponent },
 ];

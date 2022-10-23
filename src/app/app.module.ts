@@ -21,6 +21,7 @@ import { AddEditCategoriesComponent } from './features/maintenance/categories/ad
 import { ListCategoriesComponent } from './features/maintenance/categories/list-categories/list-categories.component';
 import { ListPrioritiesComponent } from './features/maintenance/priorities/list-priorities/list-priorities.component';
 import { AddEditPrioritiesComponent } from './features/maintenance/priorities/add-edit-priorities/add-edit-priorities.component';
+import { ToDoComponent } from './features/to-do/to-do.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { AddEditPrioritiesComponent } from './features/maintenance/priorities/ad
     AddEditCategoriesComponent,
     ListCategoriesComponent,
     ListPrioritiesComponent,
-    AddEditPrioritiesComponent
+    AddEditPrioritiesComponent,
+    ToDoComponent
   ],
   imports: [
     BrowserModule,
