@@ -5,3 +5,5 @@ export * from './role';
 export * from './login';
 export * from './token';
 export * from './category';
+export * from './priorities';
+export * from './toDo'

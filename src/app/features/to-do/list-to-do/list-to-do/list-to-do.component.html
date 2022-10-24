@@ -1,0 +1,47 @@
+<p>list-to-do works!</p>
+<h1>To Do</h1>
+<a routerLink="add" class="btn btn-sm btn-success mb-2">Add To Do</a>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th style="width: 30%">To Do Id</th>
+            <th style="width: 30%">Title</th>
+            <th style="width: 30%">Description</th>
+            <th style="width: 30%">Created Date</th>
+            <th style="width: 30%">Due Date</th>
+            <th style="width: 30%">Priority</th>
+            <th style="width: 30%">Category</th>
+            <th style="width: 30%">User</th>
+            <th style="width: 10%"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let toDo of toDoes">
+            <td>{{toDo.id}}</td>
+            <td>{{toDo.title}}</td>
+            <td>{{toDo.description}}</td>
+            <td>{{toDo.createdDate}}</td>
+            <td>{{toDo.dueDate}}</td>
+            <!--<td>{{toDo.priority[1].name}}</td>-->
+            <td *ngFor="let pr of toDo.priority" > {{pr.name}}</td>
+            <!--<td>{{toDo.category.name}}</td>
+            <td>{{toDo.user.firstName}}</td>-->
+             <!--<td style="white-space: nowrap">
+               <a routerLink="edit/{{toDo.id}}" class="btn btn-sm btn-primary mr-1">Edit</a>
+                <button 
+                    (click)="deletetoDoes(toDo.id ?? '')" 
+                    class="btn btn-sm btn-danger btn-delete-todoes" 
+                    [disabled]="this.isDeleting">
+                    
+                    <span *ngIf="this.isDeleting" class="spinner-border spinner-border-sm"></span>
+                    <span *ngIf="!this.isDeleting">Delete</span>
+                </button>
+            </td>-->
+        </tr>
+        <tr *ngIf="!toDoes">
+            <td colspan="4" class="text-center">
+                <span class="spinner-border spinner-border-lg align-center"></span>
+            </td>
+        </tr>
+    </tbody>
+</table>
