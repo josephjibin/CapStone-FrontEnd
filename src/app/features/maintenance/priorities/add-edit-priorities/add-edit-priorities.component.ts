@@ -4,7 +4,7 @@ import { NgForm } from '@angular/forms';
 import { AlertService } from 'src/app/core/services/alert.service';
 import { Priorities } from 'src/app/core/models/priorities';
 import { PrioritiesService } from 'src/app/core/services/priorities.service';
-
+import { first } from 'rxjs/operators';
 @Component({
   selector: 'app-add-edit-priorities',
   templateUrl: './add-edit-priorities.component.html',
@@ -14,10 +14,12 @@ export class AddEditPrioritiesComponent implements OnInit {
   @ViewChild('addEdit')
   public addEdit!: NgForm;
   model = new Priorities();
+
   id!: string;
   isAddMode!: boolean;
   loading = false;
   submitted = false;
+
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -27,10 +29,12 @@ export class AddEditPrioritiesComponent implements OnInit {
 
   ngOnInit() {this.id = this.route.snapshot.params['id'];
   this.isAddMode = !this.id;
-console.log('ddd');
+
   if (!this.isAddMode) {
     this.prioritiesService
       .getById(this.id)
+      .pipe(first())
+      .subscribe((x: Priorities) => (this.model = x));
   }
   }
 
@@ -56,8 +60,8 @@ console.log('ddd');
   private createPriority() {
     this.prioritiesService
       .create(this.addEdit.value)
-      this.loading = false;
-      /*.subscribe({
+      .pipe(first())
+      .subscribe({
         next: () => {
           this.alertService.success('Priority added', {
             keepAfterRouteChange: true,
@@ -68,16 +72,16 @@ console.log('ddd');
           this.alertService.error(error.error);
           this.loading = false;
         },
-      });*/
+      });
   }
 
   private updatePriority() {
     this.prioritiesService
       .update(this.id, this.addEdit.value)
-      this.loading = false;
-      /*.subscribe({
+      .pipe(first())
+      .subscribe({
         next: () => {
-          this.alertService.success('Role updated', {
+          this.alertService.success('Priority updated', {
             keepAfterRouteChange: true,
           });
           this.router.navigate(['../../'], { relativeTo: this.route });
@@ -86,7 +90,24 @@ console.log('ddd');
           this.alertService.error(error.error);
           this.loading = false;
         },
-      });*/
+      });
+  }
+  public deletePriority() {
+    this.prioritiesService
+      .delete(this.addEdit.value)
+      .pipe(first())
+      .subscribe({
+        next: () => {
+          this.alertService.success('Priority Deleted', {
+            keepAfterRouteChange: true,
+          });
+          this.router.navigate(['../'], { relativeTo: this.route });
+        },
+        error: (error) => {
+          this.alertService.error(error.error);
+          this.loading = false;
+        },
+      });
   }
 
 }

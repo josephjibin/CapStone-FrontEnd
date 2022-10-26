@@ -22,6 +22,7 @@ import { ListCategoriesComponent } from './features/maintenance/categories/list-
 import { ListPrioritiesComponent } from './features/maintenance/priorities/list-priorities/list-priorities.component';
 import { AddEditPrioritiesComponent } from './features/maintenance/priorities/add-edit-priorities/add-edit-priorities.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,6 +41,8 @@ import { AddEditPrioritiesComponent } from './features/maintenance/priorities/ad
     ListCategoriesComponent,
     ListPrioritiesComponent,
     AddEditPrioritiesComponent
+    
+ 
   ],
   imports: [
     BrowserModule,
