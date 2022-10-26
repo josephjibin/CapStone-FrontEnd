@@ -1,39 +1,36 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { Priorities } from '../models/priorities';
+import {  Priorities } from '../models/priorities';
+
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class PrioritiesService {
-  private baseUrlDemoPriorities;
+  private baseUrl;
   constructor(private httpClient: HttpClient) {
-    this.baseUrlDemoPriorities = `${environment.baseUrlDemoPriorities}`;
+    this.baseUrl = `${environment.baseUrl}/priority`;
+
+  }
+
+  create(priority: Priorities) {
+    return this.httpClient.post(this.baseUrl,priority);
   }
 
   getAll() {
-    return this.httpClient.get<Priorities[]>(this.baseUrlDemoPriorities);
+    return this.httpClient.get<Priorities[]>(this.baseUrl);
   }
-  getById(roleId: string) {
-    return roleId;
-    //return this.httpClient.get<Role>(`${this.baseUrl}/${roleId}`);
+
+  getById(priorityId: string) {
+    return this.httpClient.get<Priorities>(`${this.baseUrl}/${priorityId}`);
   }
-  
-  delete(prioritiesId: string) {
-    console.log(prioritiesId);
-    //return this.httpClient.delete(`${this.baseUrlDemoPriorities}/${prioritiesId}`);
+
+  update(priorityId: string, priority: Priorities) {
+    return this.httpClient.put(`${this.baseUrl}/${priorityId}`, priority);
   }
-  create(priority: Priorities) {
-    console.log(priority.description);
-    console.log(priority.name);
-    //console.log(priority.id);
-    //return this.httpClient.post(this.baseUrl, role);
-  }
-  update(prioritiesId: string, priority: Priorities) {
-    console.log(prioritiesId);
-    console.log(priority.description);
-    console.log(priority.name);
-    //return this.httpClient.put(`${this.baseUrl}/${roleId}`, role);
+
+  delete(priorityId: string) {
+    return this.httpClient.delete(`${this.baseUrl}/${priorityId}`);
   }
 }

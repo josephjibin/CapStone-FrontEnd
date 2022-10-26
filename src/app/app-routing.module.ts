@@ -25,6 +25,14 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     children: [
       { path: 'home', component: HomeComponent },
+      
+      
+      /*{ path: 'todos', 
+      children: [
+        { path: '',component: ToDoListComponent },
+        { path: 'add', component: AddEditToDoComponent },
+      ],
+    },*/
       {
         path: 'maintenance',
         children: [
@@ -72,6 +80,8 @@ const routes: Routes = [
       },
     ],
   },
+
+
   //Wild Card Route for 404 request
   { path: '**', pathMatch: 'full', component: PageNotFoundComponent },
 ];
