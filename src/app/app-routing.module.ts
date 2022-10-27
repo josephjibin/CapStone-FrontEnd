@@ -14,6 +14,7 @@ import { ListCategoriesComponent } from './features/maintenance/categories/list-
 import { ListPrioritiesComponent } from './features/maintenance/priorities/list-priorities/list-priorities.component';
 import { AddEditPrioritiesComponent } from './features/maintenance/priorities/add-edit-priorities/add-edit-priorities.component';
 
+
 const routes: Routes = [
   { path: '', redirectTo: 'site/home', pathMatch: 'full' },
   { path: 'register', component: RegisterComponent },
@@ -23,6 +24,14 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     children: [
       { path: 'home', component: HomeComponent },
+      
+      
+      /*{ path: 'todos', 
+      children: [
+        { path: '',component: ToDoListComponent },
+        { path: 'add', component: AddEditToDoComponent },
+      ],
+    },*/
       {
         path: 'maintenance',
         children: [
@@ -60,8 +69,16 @@ const routes: Routes = [
           },
         ],
       },
+
+      
+
+
+
+
     ],
   },
+
+
   //Wild Card Route for 404 request
   { path: '**', pathMatch: 'full', component: PageNotFoundComponent },
 ];
