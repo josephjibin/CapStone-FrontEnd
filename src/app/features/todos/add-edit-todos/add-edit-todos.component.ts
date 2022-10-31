@@ -3,8 +3,13 @@ import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { first } from 'rxjs/internal/operators/first';
+import { Category } from 'src/app/core/models/category';
+import { Priorities } from 'src/app/core/models/priorities';
 import { Todo } from 'src/app/core/models/todos';
+import { User } from 'src/app/core/models/user';
 import { AlertService } from 'src/app/core/services/alert.service';
+import { CategoryService } from 'src/app/core/services/category.service';
+import { PrioritiesService } from 'src/app/core/services/priorities.service';
 import { TodoService } from 'src/app/core/services/todo.service';
 
 @Component({
@@ -16,6 +21,10 @@ export class AddEditTodosComponent implements OnInit {
   @ViewChild('addEdit')
   public addEdit!: NgForm;
   model = new Todo();
+  datePicker!: NgbDateStruct;
+  priorities!: Priorities[];
+  categories!: Category[];
+  users!: User[];
 
   id!: string;
   isAddMode!: boolean;
@@ -27,6 +36,8 @@ export class AddEditTodosComponent implements OnInit {
     private router: Router,
     private todoService: TodoService,
     private alertService: AlertService,
+    private prioritiesService: PrioritiesService,
+    private categoriesService: CategoryService,
   ) {}
 
   ngOnInit() {

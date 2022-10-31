@@ -16,7 +16,7 @@
           />
         </div>
         <div class="form-group">
-          <label for="name" class="form-label">Name</label>
+          <label for="name" class="form-label">Title</label>
           <input
             type="text"
             class="form-control"
@@ -49,18 +49,59 @@
             </div>
           </div>
         </div>
-        <!-- <label for="createdDate">Created Date</label>
-        <div class="input-group">
-			<input
-				class="form-control"
-				placeholder="yyyy-mm-dd"
-				name="dp"
-				[(ngModel)]="datePicker"
-				ngbDatepicker
-				#d="ngbDatepicker"
-			/>
-			<button class="btn btn-outline-secondary bi bi-calendar3" (click)="d.toggle()" type="button"></button>
-        </div> -->
+        <div class="form-group">
+          <label for="createdDate">Created Date</label>
+          <input
+            type="text"
+            class="form-control"
+            id="createdDate"
+            required
+            [(ngModel)]="model.createdDate"
+            name="createdDate"
+            #createdDate="ngModel"
+          />
+           <div *ngIf="createdDate.invalid && (createdDate.dirty || createdDate.touched)">
+            <div *ngIf="createdDate.errors?.['required']" class="text-danger">
+              Date is required *.
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="dueDate">Due Date</label>
+          <input
+            type="text"
+            class="form-control"
+            id="dueDate"
+            required
+            [(ngModel)]="model.dueDate"
+            name="dueDate"
+            #dueDate="ngModel"
+          />
+          <div *ngIf="dueDate.invalid && (dueDate.dirty || dueDate.touched)">
+            <div *ngIf="dueDate.errors?.['required']" class="text-danger">
+              Date is required *.
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="priority">Priority</label>
+          <select class="form-control" [(ngModel)]="model.priority" name="priority" #priority="ngModel">
+          <option *ngFor="let priority of priorities" [ngValue]="priority.id">{{priority.name}}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="priority">Category</label>
+          <select class="form-control" [(ngModel)]="model.category" name="category">
+          <option *ngFor="let category of categories" [value]="category.id">{{category.name}}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="priority">User</label>
+          <select class="form-control" [(ngModel)]="model.user" name="user">
+          <option *ngFor="let user of users" value="{{user.id}}">{{user.firstName}} {{user.lastName}}/option>
+          </select>
+        </div>
+        </div>
+
         <div class="form-group mt-2">
           <button [disabled]="loading" class="btn btn-primary">
             <span
@@ -73,7 +114,7 @@
             Reset
           </button>
           <button type="button" class="btn btn-primary">
-            <a routerLink="/site/maintenance/categories" class="text-white text-decoration-none">Cancel</a>
+            <a routerLink="/site/maintenance/todo" class="text-white text-decoration-none">Cancel</a>
           </button>
           
         </div>

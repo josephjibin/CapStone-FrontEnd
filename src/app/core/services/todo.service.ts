@@ -10,7 +10,8 @@ import { Todo } from '../models/todos';
 export class TodoService {
   private baseUrl;
   constructor(private httpClient: HttpClient) {
-    this.baseUrl = `https://api.npoint.io/8978e23e9a72b0902df7`;
+    this.baseUrl =`${environment.baseUrl}/todo`;
+    // this.baseUrl = `https://api.npoint.io/8978e23e9a72b0902df7`;
   }
 
   create(todo: Todo) {
