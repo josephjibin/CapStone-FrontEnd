@@ -1,0 +1,123 @@
+<div class="container">
+    <div>
+      <h1 *ngIf="isAddMode">Add New To-do</h1>
+      <h1 *ngIf="!isAddMode">Edit To-do</h1>
+
+      <form (ngSubmit)="onSubmit()" #addEdit="ngForm" class="needs-validation" novalidate>
+        <div class="form-group">
+          <input
+            type="text"
+            class="form-control"
+            id="id"
+            [(ngModel)]="model.id"
+            name="id"
+            #id="ngModel"
+            [hidden]="true"
+          />
+        </div>
+        <div class="form-group">
+          <label for="name" class="form-label">Title</label>
+          <input
+            type="text"
+            class="form-control"
+            id="name"
+            required
+            [(ngModel)]="model.title"
+            name="name"
+            #name="ngModel"
+          />
+          <div *ngIf="name.invalid && (name.dirty || name.touched)">
+            <div *ngIf="name.errors?.['required']" class="text-danger">
+              Name is required *.
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="description">Description</label>
+          <input
+            type="text"
+            class="form-control"
+            id="description"
+            required
+            [(ngModel)]="model.description"
+            name="description"
+            #description="ngModel"
+          />
+          <div *ngIf="description.invalid && (description.dirty || description.touched)">
+            <div *ngIf="description.errors?.['required']" class="text-danger">
+              Description is required *.
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="createdDate">Created Date</label>
+          <input
+            type="text"
+            class="form-control"
+            id="createdDate"
+            required
+            [(ngModel)]="model.createdDate"
+            name="createdDate"
+            #createdDate="ngModel"
+          />
+           <div *ngIf="createdDate.invalid && (createdDate.dirty || createdDate.touched)">
+            <div *ngIf="createdDate.errors?.['required']" class="text-danger">
+              Date is required *.
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="dueDate">Due Date</label>
+          <input
+            type="text"
+            class="form-control"
+            id="dueDate"
+            required
+            [(ngModel)]="model.dueDate"
+            name="dueDate"
+            #dueDate="ngModel"
+          />
+          <div *ngIf="dueDate.invalid && (dueDate.dirty || dueDate.touched)">
+            <div *ngIf="dueDate.errors?.['required']" class="text-danger">
+              Date is required *.
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="priority">Priority</label>
+          <select class="form-control" [(ngModel)]="model.priority" name="priority" #priority="ngModel">
+          <option *ngFor="let priority of priorities" [ngValue]="priority.id">{{priority.name}}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="priority">Category</label>
+          <select class="form-control" [(ngModel)]="model.category" name="category">
+          <option *ngFor="let category of categories" [value]="category.id">{{category.name}}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="priority">User</label>
+          <select class="form-control" [(ngModel)]="model.user" name="user">
+          <option *ngFor="let user of users" value="{{user.id}}">{{user.firstName}} {{user.lastName}}/option>
+          </select>
+        </div>
+        </div>
+
+        <div class="form-group mt-2">
+          <button [disabled]="loading" class="btn btn-primary">
+            <span
+              *ngIf="loading"
+              class="spinner-border spinner-border-sm mr-1"
+            ></span>
+            Save
+          </button>
+          <button type="button" class="btn btn-primary mx-2" (click)="addEdit.reset()">
+            Reset
+          </button>
+          <button type="button" class="btn btn-primary">
+            <a routerLink="/site/maintenance/todo" class="text-white text-decoration-none">Cancel</a>
+          </button>
+          
+        </div>
+      </form>
+    </div>
+  </div>
