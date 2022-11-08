@@ -11,6 +11,7 @@ import { AlertService } from 'src/app/core/services/alert.service';
 import { CategoryService } from 'src/app/core/services/category.service';
 import { PrioritiesService } from 'src/app/core/services/priorities.service';
 import { TodoService } from 'src/app/core/services/todo.service';
+import { UserService } from 'src/app/core/services/user.service';
 
 @Component({
   selector: 'app-add-edit-todos',
@@ -38,6 +39,7 @@ export class AddEditTodosComponent implements OnInit {
     private alertService: AlertService,
     private prioritiesService: PrioritiesService,
     private categoriesService: CategoryService,
+    private usersService:UserService
   ) {}
 
   ngOnInit() {
@@ -49,6 +51,18 @@ export class AddEditTodosComponent implements OnInit {
         .pipe(first())
         .subscribe((x: Todo) => (this.model = x));
     }
+    this.prioritiesService
+    .getAll()
+    .subscribe((priorities) => console.log((this.priorities = priorities)),
+    );
+    this.categoriesService
+    .getAll()
+    .subscribe((categories) => console.log((this.categories = categories)),
+    );
+    this.usersService
+    .getAll()
+    .subscribe((users) => console.log((this.users = users)),
+    );
   }
 
   onSubmit() {

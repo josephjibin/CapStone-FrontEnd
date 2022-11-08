@@ -16,19 +16,19 @@
           />
         </div>
         <div class="form-group">
-          <label for="name" class="form-label">Title</label>
+          <label for="title" class="form-label">Title</label>
           <input
             type="text"
             class="form-control"
-            id="name"
+            id="title"
             required
             [(ngModel)]="model.title"
-            name="name"
-            #name="ngModel"
+            name="title"
+            #title="ngModel"
           />
-          <div *ngIf="name.invalid && (name.dirty || name.touched)">
-            <div *ngIf="name.errors?.['required']" class="text-danger">
-              Name is required *.
+          <div *ngIf="title.invalid && (title.dirty || title.touched)">
+            <div *ngIf="title.errors?.['required']" class="text-danger">
+              title is required *.
             </div>
           </div>
         </div>
@@ -59,6 +59,7 @@
             [(ngModel)]="model.createdDate"
             name="createdDate"
             #createdDate="ngModel"
+            value="today's date"
           />
            <div *ngIf="createdDate.invalid && (createdDate.dirty || createdDate.touched)">
             <div *ngIf="createdDate.errors?.['required']" class="text-danger">
@@ -84,20 +85,23 @@
         </div>
         <div class="form-group">
           <label for="priority">Priority</label>
-          <select class="form-control" [(ngModel)]="model.priority" name="priority" #priority="ngModel">
-          <option *ngFor="let priority of priorities" [ngValue]="priority.id">{{priority.name}}</option>
+          <select class="form-control" [(ngModel)]="model.priority" ng-init="model.priority?.name" name="priority" #priority="ngModel" required>
+          <option [ngValue]="model.priority" hidden>{{model.priority?.name}}</option>
+          <option *ngFor="let priority of priorities" [ngValue]="priority">{{priority.name}}</option>
           </select>
         </div>
         <div class="form-group">
           <label for="priority">Category</label>
-          <select class="form-control" [(ngModel)]="model.category" name="category">
-          <option *ngFor="let category of categories" [value]="category.id">{{category.name}}</option>
+          <select class="form-control" [(ngModel)]="model.category" name="category" #category="ngModel" ng-init="model.category?.name"required>
+          <option [ngValue]="model.category" hidden>{{model.category?.name}}</option>
+          <option *ngFor="let category of categories" [ngValue]="category">{{category.name}}</option>
           </select>
         </div>
         <div class="form-group">
           <label for="priority">User</label>
           <select class="form-control" [(ngModel)]="model.user" name="user">
-          <option *ngFor="let user of users" value="{{user.id}}">{{user.firstName}} {{user.lastName}}/option>
+          <option [ngValue]="model.user" hidden>{{model.user?.firstName}}</option>
+          <option *ngFor="let user of users" [ngValue]="user">{{user.firstName}}</option>
           </select>
         </div>
         </div>
@@ -114,7 +118,7 @@
             Reset
           </button>
           <button type="button" class="btn btn-primary">
-            <a routerLink="/site/maintenance/todo" class="text-white text-decoration-none">Cancel</a>
+            <a routerLink="/site/todos" class="text-white text-decoration-none">Cancel</a>
           </button>
           
         </div>
