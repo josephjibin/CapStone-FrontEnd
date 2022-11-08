@@ -31,6 +31,8 @@ export class AddEditTodosComponent implements OnInit {
   isAddMode!: boolean;
   loading = false;
   submitted = false;
+  today!: string;
+
 
   constructor(
     private route: ActivatedRoute,
@@ -63,6 +65,8 @@ export class AddEditTodosComponent implements OnInit {
     .getAll()
     .subscribe((users) => console.log((this.users = users)),
     );
+    this.today = new Date().toISOString().split('T')[0];
+    console.log("date "+this.today);
   }
 
   onSubmit() {
