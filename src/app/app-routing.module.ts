@@ -22,17 +22,9 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   {
     path: 'site',
-    //canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
     children: [
       { path: 'home', component: HomeComponent },
-      
-      
-      /*{ path: 'todos', 
-      children: [
-        { path: '',component: ToDoListComponent },
-        { path: 'add', component: AddEditToDoComponent },
-      ],
-    },*/
       {
         path: 'maintenance',
         children: [

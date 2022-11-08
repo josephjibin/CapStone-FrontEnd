@@ -19,11 +19,11 @@
             <td>{{todo.id}}</td>
             <td>{{todo.title}}</td>
             <td>{{todo.description}}</td>
-            <td>{{todo.createdDate}}</td>
-            <td>{{todo.dueDate}}</td>
-            <td>{{todo.priority}}</td>
-            <td>{{todo.category}}</td>
-            <td>{{todo.user}}</td>
+            <td>{{todo.createdDate | date: 'dd/MM/yyyy'}}</td>
+            <td>{{todo.dueDate | date: 'dd/MM/yyyy'}}</td>
+            <td>{{todo.priority?.name}}</td>
+            <td>{{todo.category?.name}}</td>
+            <td>{{todo.user?.firstName}}</td>
              <td style="white-space: nowrap">
                <a routerLink="edit/{{todo.id}}" class="btn btn-sm btn-primary mr-1">Edit</a>
                 <button 
