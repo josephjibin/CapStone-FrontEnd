@@ -58,13 +58,13 @@
         type="search"
         [(ngModel)]="searchTerm"
         name="searchTerm"
-        (keyup)="search($event)"
+     
         placeholder="Search ToDos ..."
         aria-label="Search"
       />
-      <!-- <button class="btn btn-outline-success" type="submit">
+       <button class="btn btn-outline-success" type="submit" (click)="search()">
         <i class="bi bi-search"></i>
-      </button> -->
+      </button> 
     </form>
   </div>
 </nav>

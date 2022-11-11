@@ -53,8 +53,7 @@ export class NavBarComponent implements OnInit {
       },
     });
   }
-  search(event :any){
-this.searchTerm=(event.target as HTMLInputElement).value
+  search(){
 this.searchService.search.next(this.searchTerm)
   }
 }

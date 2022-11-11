@@ -21,6 +21,7 @@ export class ListTodoComponent implements OnInit {
     this.todoService
       .getAll()
       .subscribe((todos) => console.log((this.todos = todos)));
+      
     this.searchService.getToDos().subscribe(value=>{
     this.todos =value;
     })
