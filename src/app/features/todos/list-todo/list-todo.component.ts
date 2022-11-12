@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { first } from 'rxjs/operators';
 import { Todo } from 'src/app/core/models/todos';
+import { SearchService } from 'src/app/core/services/search.service';
 import { TodoService } from 'src/app/core/services/todo.service';
 
 @Component({
@@ -9,15 +10,24 @@ import { TodoService } from 'src/app/core/services/todo.service';
   styleUrls: ['./list-todo.component.css']
 })
 export class ListTodoComponent implements OnInit {
+  term:string="";
   todos!: Todo[];
   isDeleting!: boolean;
-  constructor(private todoService : TodoService) { }
+  constructor(private todoService : TodoService,
+    private searchService : SearchService ) { }
 
   ngOnInit() {
     this.isDeleting = false;
     this.todoService
       .getAll()
       .subscribe((todos) => console.log((this.todos = todos)));
+      
+    this.searchService.getToDos().subscribe(value=>{
+    this.todos =value;
+    })
+    this.searchService.search.subscribe(data=>{
+      this.term =data;
+    })
   }
 
   deleteTodo(todoId: string) {
