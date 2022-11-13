@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { User } from 'src/app/core/models/user';
 import { AlertService } from 'src/app/core/services/alert.service';
 import { AuthService } from 'src/app/core/services/auth.service';
+import { SearchService } from 'src/app/core/services/search.service';
 import { TokenStorageService } from 'src/app/core/services/token-storage.service';
 
 @Component({
@@ -13,12 +14,14 @@ import { TokenStorageService } from 'src/app/core/services/token-storage.service
 export class NavBarComponent implements OnInit {
   userName: string;
   user: User | null;
+  searchTerm!:string;
 
   constructor(
     private tokenStorageService: TokenStorageService,
     private authService: AuthService,
     private alertService: AlertService,
-    private router: Router
+    private router: Router,
+    private searchService : SearchService
   ) {
     this.userName = 'unknown user';
     this.user = null;
@@ -50,4 +53,15 @@ export class NavBarComponent implements OnInit {
       },
     });
   }
+
+  onChangeSearchText(searchTerm: string) {
+    if(searchTerm.length==0 || searchTerm.length>=3) {
+      this.search();
+    }
+  }
+
+  search() {
+    this.searchService.search.next(this.searchTerm)
+  }
+
 }
