@@ -11,7 +11,6 @@ export class TodoService {
   private baseUrl;
   constructor(private httpClient: HttpClient) {
     this.baseUrl =`${environment.baseUrl}/todo`;
-    // this.baseUrl = `https://api.npoint.io/8978e23e9a72b0902df7`;
   }
 
   create(todo: Todo) {
@@ -20,6 +19,13 @@ export class TodoService {
 
   getAll() {
     return this.httpClient.get<Todo[]>(this.baseUrl);
+  }
+
+  search(searchTerm: string) {
+    if( !searchTerm ) {
+      return this.httpClient.get<Todo[]>(this.baseUrl);
+    }
+    return this.httpClient.get<Todo[]>(`${this.baseUrl}/search/${searchTerm}`);
   }
 
   getById(todoId: string) {
