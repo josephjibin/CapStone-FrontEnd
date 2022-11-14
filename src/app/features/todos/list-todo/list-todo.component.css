@@ -1,0 +1,14 @@
+
+.normal {
+    color: #1e1e1e;
+}
+
+.completed {
+    color: #1e1e1e;
+    background-color: #e2ffec;
+}
+
+.overdue {
+    color: #1e1e1e;
+    background-color: #ffdcdc;
+}

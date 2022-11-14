@@ -27,7 +27,32 @@ export class ListTodoComponent implements OnInit {
 
   }
 
-  
+  getStyle(todo: Todo) : string {
+    let today = new Date().toISOString().split('T')[0];
+    let due = new Date(todo.dueDate!).toISOString().split('T')[0];;
+
+    if (due && due<today) {
+      if (!todo.isCompleted) {
+      return "overdue";
+      }
+    }
+
+    if (todo.isCompleted && todo.isCompleted == true)
+      return "completed";
+
+    return "normal";
+  }
+
+  setCompleted(todo: Todo) {
+    this.todoService.setCompleted(todo).subscribe( x => {
+
+      this.todoService.search(this.term).subscribe( todoData => {
+        this.todos = todoData
+      });
+      
+    });
+  }
+
   deleteTodo(todoId: string) {
     if(window.confirm('Are sure you want to delete this item?')) {
     const todo = this.todos.find((x) => x.id === todoId);

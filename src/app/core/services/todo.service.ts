@@ -28,6 +28,10 @@ export class TodoService {
     return this.httpClient.get<Todo[]>(`${this.baseUrl}/search/${searchTerm}`);
   }
 
+  setCompleted(todo: Todo) {
+    return this.httpClient.put(`${this.baseUrl}/SetComplete/${todo.id}`, todo);
+  }
+
   getById(todoId: string) {
     return this.httpClient.get<Todo>(`${this.baseUrl}/${todoId}`);
   }
