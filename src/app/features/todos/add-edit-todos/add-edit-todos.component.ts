@@ -66,7 +66,7 @@ export class AddEditTodosComponent implements OnInit {
     .subscribe((users) => console.log((this.users = users)),
     );
     this.today = new Date().toISOString().split('T')[0];
-    console.log("date "+this.today);
+    console.log("date"+this.today);
   }
 
   onSubmit() {
@@ -137,6 +137,7 @@ export class AddEditTodosComponent implements OnInit {
           this.loading = false;
         },
       });
-  }
-
+  
 }
+}
+

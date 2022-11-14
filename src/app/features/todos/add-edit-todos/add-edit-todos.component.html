@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container-fluid">
   <div>
     <h1 *ngIf="isAddMode">Add New To-do</h1>
     <h1 *ngIf="!isAddMode">Edit To-do</h1>
@@ -58,7 +58,6 @@
           [(ngModel)]="today"
           name="createdDate"
           #createdDate="ngModel"
-        
         />
         <input *ngIf="!isAddMode"
           type="date"
@@ -66,8 +65,7 @@
           id="createdDate"
           [(ngModel)]="model.createdDate"
           name="createdDate"
-          #createdDate="ngModel"
-          
+          #createdDate="ngModel"  
         />
       </div>
       <div class="form-group">
@@ -80,12 +78,14 @@
           [(ngModel)]="model.dueDate"
           name="dueDate"
           #dueDate="ngModel"
+          [min] = "today"
         />
         <div *ngIf="dueDate.invalid && (dueDate.dirty || dueDate.touched)">
           <div *ngIf="dueDate.errors?.['required']" class="text-danger">
             Date is required *.
         </div>
       </div>
+    </div>
       <div class="form-group">
         <label for="priority">Priority</label>
         <select class="form-control" [(ngModel)]="model.priority" ng-init="model.priority?.name" name="priority" #priority="ngModel" required>
@@ -101,13 +101,13 @@
         </select>
       </div>
       <div class="form-group">
-        <label for="priority">User</label>
+        <label for="user">User</label>
         <select class="form-control" [(ngModel)]="model.user" name="user">
         <option [ngValue]="model.user" hidden>{{model.user?.firstName}}</option>
         <option *ngFor="let user of users" [ngValue]="user">{{user.firstName}}</option>
         </select>
       </div>
-      </div>
+  
 
       <div class="form-group mt-2">
         <button [disabled]="loading" class="btn btn-primary">
