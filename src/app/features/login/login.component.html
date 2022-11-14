@@ -1,4 +1,50 @@
-<div class="container">
+<div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+        <div class="card shadow-2-strong" style="border-radius: 1rem;">
+          <div class="card-body p-5">
+
+            <h3 class="mb-5">Log in</h3>
+            <form *ngIf="!isLoggedIn" (ngSubmit)="onSubmit()" #login="ngForm">
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email"
+                       required
+                       [(ngModel)]="model.email" name="email"
+                       #email="ngModel">
+                <div [hidden]="email.valid || email.pristine"
+                     class="alert alert-danger">
+                  Email is required
+                </div>
+              </div>
+              <br>
+              <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password"
+                       required
+                       [(ngModel)]="model.password" name="password"
+                       #password="ngModel">
+                <div [hidden]="password.valid || password.pristine"
+                     class="alert alert-danger">
+                     Password is required
+                </div>
+              </div>
+              <br>
+              <br>
+              <button type="submit" class="btn btn-success" [disabled]="!login.form.valid">Login</button>
+              <button type="button" class="btn btn-default" (click)=" login.reset()">Reset</button>
+              <button type="button" class="btn btn-default" routerLink="/register">Register</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div> 
+  </div>     
+
+
+
+
+<!-- <div class="container">
   <div>
     <form *ngIf="!isLoggedIn" (ngSubmit)="onSubmit()" #login="ngForm">
       <div class="form-group">
@@ -29,4 +75,4 @@
       <button type="button" class="btn btn-default" routerLink="/register">Register</button>
     </form>
   </div>
-</div>
+</div> -->

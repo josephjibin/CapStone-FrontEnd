@@ -21,6 +21,8 @@ export class AddEditCategoriesComponent implements OnInit {
   loading = false;
   submitted = false;
 
+  date = new Date();
+
   constructor(
     private route: ActivatedRoute,
     private router: Router,

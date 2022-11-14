@@ -45,7 +45,7 @@ export class NavBarComponent implements OnInit {
       next: (data: any) => {
         console.log('here');
         this.tokenStorageService.clearToken();
-        this.router.navigate(['/site/home']);
+        this.router.navigate(['/login']);
       },
       error: (error) => {
         console.log('here');
