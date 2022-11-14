@@ -54,11 +54,12 @@
     <span class="user-name-style">{{userName}}</span>
     <form class="d-flex">
       <input
+        #textInput 
         class="form-control me-2"
         type="search"
         [(ngModel)]="searchTerm"
         name="searchTerm"
-     
+        (ngModelChange)="onChangeSearchText(textInput.value)"
         placeholder="Search ToDos ..."
         aria-label="Search"
       />

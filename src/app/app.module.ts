@@ -23,7 +23,6 @@ import { ListPrioritiesComponent } from './features/maintenance/priorities/list-
 import { AddEditPrioritiesComponent } from './features/maintenance/priorities/add-edit-priorities/add-edit-priorities.component';
 import { ListTodoComponent } from './features/todos/list-todo/list-todo.component';
 import { AddEditTodosComponent } from './features/todos/add-edit-todos/add-edit-todos.component';
-import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @NgModule({
   declarations: [
@@ -52,7 +51,6 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
-    Ng2SearchPipeModule
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]

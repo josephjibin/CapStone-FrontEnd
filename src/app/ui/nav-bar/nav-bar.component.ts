@@ -21,7 +21,7 @@ export class NavBarComponent implements OnInit {
     private authService: AuthService,
     private alertService: AlertService,
     private router: Router,
-    private searchService :SearchService
+    private searchService : SearchService
   ) {
     this.userName = 'unknown user';
     this.user = null;
@@ -53,7 +53,15 @@ export class NavBarComponent implements OnInit {
       },
     });
   }
-  search(){
-this.searchService.search.next(this.searchTerm)
+
+  onChangeSearchText(searchTerm: string) {
+    if(searchTerm.length==0 || searchTerm.length>=3) {
+      this.search();
+    }
   }
+
+  search() {
+    this.searchService.search.next(this.searchTerm)
+  }
+
 }

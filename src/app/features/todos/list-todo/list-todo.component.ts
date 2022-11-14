@@ -10,26 +10,24 @@ import { TodoService } from 'src/app/core/services/todo.service';
   styleUrls: ['./list-todo.component.css']
 })
 export class ListTodoComponent implements OnInit {
-  term:string="";
+  term: string = "";
   todos!: Todo[];
   isDeleting!: boolean;
-  constructor(private todoService : TodoService,
-    private searchService : SearchService ) { }
+  constructor(private todoService : TodoService, private searchService : SearchService) { }
 
   ngOnInit() {
     this.isDeleting = false;
-    this.todoService
-      .getAll()
-      .subscribe((todos) => console.log((this.todos = todos)));
-      
-    this.searchService.getToDos().subscribe(value=>{
-    this.todos =value;
-    })
-    this.searchService.search.subscribe(data=>{
-      this.term =data;
-    })
+
+    this.searchService.search.subscribe( searchTerm => {
+      this.term = searchTerm;
+      this.todoService.search(this.term).subscribe( todoData => {
+        this.todos = todoData
+      });
+    });
+
   }
 
+  
   deleteTodo(todoId: string) {
     if(window.confirm('Are sure you want to delete this item?')) {
     const todo = this.todos.find((x) => x.id === todoId);
