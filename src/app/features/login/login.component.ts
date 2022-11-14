@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { Login, User } from 'src/app/core/models/models';
 import { AlertService } from 'src/app/core/services/alert.service';
 import { AuthService } from 'src/app/core/services/auth.service';
@@ -15,11 +16,13 @@ export class LoginComponent {
 
   isLoggedIn = false;
   isLoginFailed = false;
+  
 
   constructor(
     private authService: AuthService,
     private tokenStorageService: TokenStorageService,
-    private alertService: AlertService
+    private alertService: AlertService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -36,7 +39,8 @@ export class LoginComponent {
         this.tokenStorageService.saveToken(data.token!);
         this.isLoginFailed = false;
         this.isLoggedIn = true;
-        this.reloadPage();
+        this.router.navigate(['/']);
+        // this.reloadPage();
       },
       error: (error) => {
         this.alertService.error(error.error);
@@ -46,7 +50,7 @@ export class LoginComponent {
     });
   }
 
-  reloadPage(): void {
-    window.location.reload();
-  }
+  // reloadPage(): void {
+  // window.location.reload();
+  // }
 }

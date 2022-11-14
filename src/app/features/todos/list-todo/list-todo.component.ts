@@ -29,6 +29,7 @@ export class ListTodoComponent implements OnInit {
 
   
   deleteTodo(todoId: string) {
+    if(window.confirm('Are sure you want to delete this item?')) {
     const todo = this.todos.find((x) => x.id === todoId);
     this.isDeleting = true;
     this.todoService
@@ -40,5 +41,5 @@ export class ListTodoComponent implements OnInit {
         this.isDeleting = false;
       });
   }
-
+  }
 }
