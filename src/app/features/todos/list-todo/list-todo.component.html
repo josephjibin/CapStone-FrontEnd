@@ -3,29 +3,32 @@
 <table class="table table-striped">
     <thead>
         <tr>
-            <th style="width: 10%">To-do Id</th>
-            <th style="width: 10%">Title</th>
-            <th style="width: 20%">Description</th>
-            <th style="width: 10%">Created Date</th>
-            <th style="width: 10%">Due Date</th>
+            <th style="width: 15%">Title</th>
+            <th style="width: 25%">Description</th>
+            <th style="width: 5%">Created</th>
+            <th style="width: 5%">Due Date</th>
             <th style="width: 5%">Priority</th>
             <th style="width: 5%">Category</th>
             <th style="width: 10%">User</th>
-            <th style="width: 10%"></th>
+            <th style="width: 15%"></th>
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let todo of todos">
-            <td>{{todo.id}}</td>
-            <td>{{todo.title}}</td>
+        <tr [ngClass]="getStyle(todo)" *ngFor="let todo of todos">
+            <td title="{{ todo.description }}">{{todo.title}}</td>
             <td>{{todo.description}}</td>
             <td>{{todo.createdDate | date: 'yyyy/MM/dd'}}</td>
             <td>{{todo.dueDate | date: 'yyyy/MM/dd'}}</td>
             <td>{{todo.priority?.name}}</td>
             <td>{{todo.category?.name}}</td>
             <td>{{todo.user?.firstName}}</td>
-             <td style="white-space: nowrap">
-               <a routerLink="edit/{{todo.id}}" class="btn btn-sm btn-primary mr-1">Edit</a>
+            <td style="white-space: nowrap">
+                <button *ngIf="!todo.isCompleted"
+                    (click)="setCompleted(todo)" 
+                    class="btn btn-sm btn-success pr-1">
+                    <span>Done</span>
+                </button>&nbsp;
+               <a routerLink="edit/{{todo.id}}" class="btn btn-sm btn-primary pr-2">Edit</a>&nbsp;
                 <button 
                     (click)="deleteTodo(todo.id ?? '')" 
                     class="btn btn-sm btn-danger btn-delete-priorities" 

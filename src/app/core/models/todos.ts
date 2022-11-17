@@ -12,6 +12,6 @@ import { User } from "./user";
     priority?: Priorities; 
     category?: Category; 
     user?: User;
-    IsCompleted?: boolean;
+    isCompleted?: boolean;
     
 }
