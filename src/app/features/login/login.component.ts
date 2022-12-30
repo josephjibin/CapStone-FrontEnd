@@ -39,7 +39,7 @@ export class LoginComponent {
         this.tokenStorageService.saveToken(data.token!);
         this.isLoginFailed = false;
         this.isLoggedIn = true;
-        this.router.navigate(['/']);
+         this.router.navigate(['/']);
         // this.reloadPage();
       },
       error: (error) => {
